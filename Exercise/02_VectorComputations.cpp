@@ -5,15 +5,20 @@ using namespace std;
 using namespace vectorfunctions;
 
 int main() {
-    // init param
-    const int arraySize = 3;
+    cout << "CIE 1 :)" << endl;
+
+    // init arraySize
+    int arraySize;
+    cout << "Enter vectorsize:" << endl;
+    cin >> arraySize;
+
 
     // init arrays
-    double array1[arraySize];
-    double array2[arraySize];
+    double* array1 = new double[arraySize];
+    double* array2 = new double[arraySize];
+    //double array2[arraySize];
 
 
-    cout << "Drecks CIE 1 ich hab so kb mehr Hunde" << endl;
     // assign arrays
     cout << "Enter values for vector 1:" << endl;
     assignArrayValues(arraySize, array1);
@@ -26,11 +31,33 @@ int main() {
     cout << endl;
 
     // functions
-    calcDotProduct(arraySize, array1, array2);
-    calcEuclideanNorm(arraySize, array1);
-    maxNorm(arraySize, array1);
+   
+    
+    int userChoice;
+    cout << "What to do?" << endl;
+    cout << "1 - DotProduct" << endl;
+    cout << "2 - Ecilidean norm" << endl;
+    cout << "3 - max norm" << endl;
+    cout << "4 - TERMINATEs the PROG" << endl;
 
-    // example fro lecture
+    cin >> userChoice;;
+    
+    switch (userChoice) {
+        case 1:
+            calcDotProduct(arraySize, array1, array2);
+            break;
+        case 2:
+            calcEuclideanNorm(arraySize, array1);
+            break;
+        case 3:
+            maxNorm(arraySize, array1);
+            break;
+        default:
+            break;
+    }
+
+
+    // example from lecture
     double* arr = new double[100];
     
     // BAD only deletes pointer, not data
