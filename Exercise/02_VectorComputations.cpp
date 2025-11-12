@@ -30,5 +30,15 @@ int main() {
     calcEuclideanNorm(arraySize, array1);
     maxNorm(arraySize, array1);
 
+    // example fro lecture
+    double* arr = new double[100];
+    
+    // BAD only deletes pointer, not data
+    // delete arr 
+
+    // only deletes pointer, not data
+    delete[] arr;
+
+
     return 0;
 }
