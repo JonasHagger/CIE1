@@ -48,9 +48,6 @@ namespace vectorfunctions {
 
         cout << "Max Norm1 = " << maxVal << endl;
 
-        // alt
-        double maxValPnt = *max_element(array, array + arraySize);
-        cout << "Max Norm2 = " << maxValPnt << endl;
     }
 
 } // namespace vectorfunctions
