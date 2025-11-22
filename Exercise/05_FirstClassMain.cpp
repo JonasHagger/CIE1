@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//      Classes
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 namespace Cie {
 
     class DoubleVector {
@@ -10,6 +13,7 @@ namespace Cie {
         DoubleVector(int initArraySize);
 
         void PrintVector();
+        int getSize();
         double& At(int i);
         void SetAt(int i, double d);
         void Resize(int newArraySize);
@@ -51,6 +55,10 @@ namespace Cie {
         for (int i=0; i < arraySize; ++i) {
             cout << array[i] << endl;
         }
+    }
+
+    int DoubleVector::getSize() {
+        return arraySize;
     }
 
     double& DoubleVector::At(int i) {
@@ -98,6 +106,23 @@ namespace Cie {
     }
 } // namespace cie
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//      Functions
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+void calcDotProduct(Cie::DoubleVector Array1, Cie::DoubleVector Array2) {
+    double sum = 0;
+    for (int i = 0; i < Array1.getSize(); i++) {
+        sum += Array1.At(i) * Array2.At(i);
+    }
+    cout << "Dot Product = " << sum << endl;
+}
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//      Main
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 int main() {
 
@@ -122,6 +147,12 @@ int main() {
 
     cout << "Pushback" << endl;
     Array.PushBack();
+
+    // create another instance
+    Cie::DoubleVector Arrayyy(arraySize);
+    Cie::DoubleVector Hurrayyy(arraySize);
+    // Dot Product
+    calcDotProduct(Arrayyy, Hurrayyy);
 
     return 0;
 }
