@@ -34,3 +34,6 @@ add_executable(Exercise02
 )
 
 
+add_executable(Exercise5
+        Exercise/05_FirstClassMain.cpp
+)

@@ -57,6 +57,9 @@ int main() {
     }
 
 
+    delete[] array1;
+    delete[] array2;
+
     // example from lecture
     double* arr = new double[100];
     
