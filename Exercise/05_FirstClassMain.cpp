@@ -11,6 +11,7 @@ namespace Cie {
     class DoubleVector {
     public:
         DoubleVector(int initArraySize);
+        ~DoubleVector();
 
         void PrintVector();
         int getSize();
@@ -29,15 +30,36 @@ namespace Cie {
     //      Constructor
     // ===========================
 
+    DoubleVector::DoubleVector(int initArraySize)
+    : arraySize(initArraySize), array(new double[initArraySize])
+    {
+        if (initArraySize <= 0) {
+            throw std::invalid_argument("Array size must be > 0");
+        }
+
+        CreateVector();
+    }
+
+    // old and unsafe version
+    /*
     DoubleVector::DoubleVector(int initArraySize) {
         if (initArraySize <= 0) {cout << "This no work :(";}
-        else
-        {
+        else {
             arraySize = initArraySize;
             array = new double[arraySize];
             CreateVector();
         }
     }
+    */
+
+    // ===========================
+    //      Destructor
+    // ===========================
+
+    DoubleVector::~DoubleVector() {
+        delete[] array;
+    }
+
 
     // ===========================
     //      Methods
@@ -140,7 +162,7 @@ int main() {
     cout << "Euclidean Norm = " << Array.calcEuclideanNorm() << endl;
     cout << "Value At 0 = " << Array.At(0) << endl;
     Array.SetAt(0, 42);
-    cout << "New Value At 1 = " << Array.At(0) << endl;
+    cout << "New Value At 0 = " << Array.At(0) << endl;
 
     cout << "Resize to 5" << endl;
     Array.Resize(5);
