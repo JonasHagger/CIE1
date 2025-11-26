@@ -1,5 +1,7 @@
 #include "DemoClass.h"
 
+using namespace Demo;
+
 int main() {
     DemoClass a(5, 10);
     DemoClass b;

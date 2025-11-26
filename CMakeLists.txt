@@ -37,6 +37,7 @@ add_executable(Exercise02
 add_executable(Exercise5
         Exercise/05_FirstClassMain.cpp
 )
-add_executable(BlueprintClass Blueprint/DemoClass.h
+add_executable(BlueprintClass 
+        Blueprint/DemoClass.h
         Blueprint/DemoClassProgram.cpp
         Blueprint/DemoClass.cpp)

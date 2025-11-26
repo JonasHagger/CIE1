@@ -1,68 +1,82 @@
 #include "DemoClass.h"
 
-// ==================================
-// static fields must be defined here
-// ==================================
-int DemoClass::instanceCounter = 0;
-int DemoClass::totalCreatedObjects = 0;
+namespace Demo {
+
+    // ==================================
+    // static fields must be defined here
+    // ==================================
+    int DemoClass::instanceCounter = 0;
+    int DemoClass::totalCreatedObjects = 0;
 
 
-// ==================================
-// ----------Constructors----------
-// ==================================
-DemoClass::DemoClass(int initialValue, int readOnly)
-    : value(initialValue), readonlyValue(readOnly)
-{
-    CountInstance();
-}
+    // ==================================
+    // ----------Constructors----------
+    // ==================================
+    DemoClass::DemoClass(int initialValue, int readOnly)
+        : value(initialValue), readonlyValue(readOnly)
+    {
+        CountInstance();
+    }
 
-// old and unsafe
-/*
-DemoClass::DemoClass(int initialValue, int readOnly) {
-    value = initialValue;
-    readonlyValue = readOnly;
+    // old and unsafe
+    /*
+    DemoClass::DemoClass(int initialValue, int readOnly) {
+        value = initialValue;
+        readonlyValue = readOnly;
 
-    CountInstance();
-}
-*/
+        CountInstance();
+    }
+    */
 
-DemoClass::DemoClass()
-    : DemoClass(0, 0)
-{}
+    DemoClass::DemoClass()
+        : DemoClass(0, 0)
+    {
+    }
 
-
-// ==================================
-// ----------Getters / Setters----------
-// ==================================
-void DemoClass::setValue(int v) {
-    if (v >= 0) value = v;
-}
-
-
-// ==================================
-// ----------Methods----------
-// ==================================
-void DemoClass::Increase(int amount) {
-    value += amount;
-    readonlyValue += amount;
-}
-
-void DemoClass::PrintInfo() const {
-    std::cout << "Name: " << name << "\n";
-    std::cout << "Value: " << value << "\n";
-    std::cout << "ReadonlyValue: " << readonlyValue << "\n";
-}
+    // ==================================
+    // ------------Destructor------------
+    // ==================================
+    DemoClass::~DemoClass() {
+        // nothing to clean up (class has no dynamic memory)
+        // but some code like this may be written here
+        // delete[] dataArray;
+        // delete dataPtr;
+    }
 
 
-// ==================================
-// ----------Static Methods----------
-// ==================================
-void DemoClass::CountInstance() {
-    instanceCounter++;
-    totalCreatedObjects++;
-}
+    // ==================================
+    // --------Getters / Setters---------
+    // ==================================
+    void DemoClass::setValue(int v) {
+        if (v >= 0) value = v;
+    }
 
-void DemoClass::PrintStatistics() {
-    std::cout << "Objects created: " << totalCreatedObjects << "\n";
-    std::cout << "InstanceCounter: " << instanceCounter << "\n";
-}
+
+    // ==================================
+    // -------------Methods--------------
+    // ==================================
+    void DemoClass::Increase(int amount) {
+        value += amount;
+        readonlyValue += amount;
+    }
+
+    void DemoClass::PrintInfo() const {
+        std::cout << "Name: " << name << "\n";
+        std::cout << "Value: " << value << "\n";
+        std::cout << "ReadonlyValue: " << readonlyValue << "\n";
+    }
+
+
+    // ==================================
+    // ----------Static Methods----------
+    // ==================================
+    void DemoClass::CountInstance() {
+        instanceCounter++;
+        totalCreatedObjects++;
+    }
+
+    void DemoClass::PrintStatistics() {
+        std::cout << "Objects created: " << totalCreatedObjects << "\n";
+        std::cout << "InstanceCounter: " << instanceCounter << "\n";
+    }
+} // namespace Demo
