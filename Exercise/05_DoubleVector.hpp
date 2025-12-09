@@ -1,34 +1,36 @@
-#ifndef CIE_DOUBLEVECTOR_HPP
-#define CIE_DOUBLEVECTOR_HPP
+#pragma once
+#ifndef CIE_DOUBLEVECTOR_H
+#define CIE_DOUBLEVECTOR_H
 
 namespace cie {
     class DoubleVector {
     private:
-        int vecSize;
+        // fields
+        int vectorSize;
         double* array;
 
-        // static DoubleVector arrayList;
-        static int vecCounter;
+        static int vectorCount;
 
     public:
-        // Constructor
+        // Constructors
         DoubleVector(int initSize);
         DoubleVector();
-        // Destructor
+        // Destructors
         ~DoubleVector();
 
-        // Memberfunctions
+        // Instance Methods
         double& at(int index);
         int size();
         void setAt(int index, double value);
-        void resize(int newSize);\
+        void resize(int newSize);
         void push_back(double value);
+        void print();
 
-        // Static Functions
-        static void print( DoubleVector& Vector);
-        static void printVecCount();
-        static void dotProduct( DoubleVector& V1,  DoubleVector& V2);
-    }; // class DoubleVector
-} //namespace cie
+        //Static Method
+        static void printVector(const DoubleVector& Vector);
+        static void printVectorCount();
+        static void dotProduct(DoubleVector V1, DoubleVector V2);
+    };
+}
 
-#endif //CIE_DOUBLEVECTOR_HPP
+#endif //CIE_DOUBLEVECTOR_H

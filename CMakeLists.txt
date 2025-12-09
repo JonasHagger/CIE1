@@ -39,10 +39,6 @@ add_executable(Exercise02
         Exercise/02_vectorfunctions.cpp
 )
 
-add_executable(Exercise5
-        Exercise/05_FirstClassMain.cpp
-)
-
 add_executable(Exercise05
         Exercise/05_Main.cpp
         Exercise/05_DoubleVector.cpp
