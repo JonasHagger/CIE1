@@ -20,8 +20,14 @@ add_executable(Blueprint
         Blueprint/main.cpp
         Blueprint/implementation.cpp)
 
+add_executable(BlueprintClass
+        Blueprint/DemoClass.h
+        Blueprint/DemoClassProgram.cpp
+        Blueprint/DemoClass.cpp)
+
 add_executable(Exercise01
         Exercise/01_BitRepresentation.cpp
+        Exercise/05_Main.cpp
 )
 
 add_executable(Exercise01_1
@@ -33,11 +39,14 @@ add_executable(Exercise02
         Exercise/02_vectorfunctions.cpp
 )
 
-
 add_executable(Exercise5
         Exercise/05_FirstClassMain.cpp
 )
-add_executable(BlueprintClass 
-        Blueprint/DemoClass.h
-        Blueprint/DemoClassProgram.cpp
-        Blueprint/DemoClass.cpp)
+
+add_executable(Exercise05
+        Exercise/05_Main.cpp
+        Exercise/05_DoubleVector.cpp
+        Exercise/05_DoubleVector.hpp)
+
+
+
