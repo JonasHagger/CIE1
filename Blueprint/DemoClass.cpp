@@ -1,4 +1,5 @@
 #include "DemoClass.h"
+#include <utility> // for std::move
 
 namespace Demo {
 
@@ -12,6 +13,7 @@ namespace Demo {
     // ==================================
     // ----------Constructors----------
     // ==================================
+    // Basic Constructor
     DemoClass::DemoClass(int initialValue, int readOnly)
         : value(initialValue), readonlyValue(readOnly)
     {
@@ -28,9 +30,62 @@ namespace Demo {
     }
     */
 
+    // Overloaded Constructor (delegating)
     DemoClass::DemoClass()
         : DemoClass(0, 0)
     {
+    }
+
+    // Copy Constructor
+    DemoClass::DemoClass(const DemoClass& other)
+        : value(other.value),
+          readonlyValue(other.readonlyValue),
+          name(other.name)
+    {
+        CountInstance();
+    }
+
+    // Assignment Constructor
+    DemoClass& DemoClass::operator=(const DemoClass& other)
+    {
+        if (this == &other)
+            return *this;
+
+        value = other.value;
+        readonlyValue = other.readonlyValue;
+        name = other.name;
+
+        return *this;
+    }
+
+    // Move Constructor
+    DemoClass::DemoClass(DemoClass&& other) noexcept
+        : value(other.value),
+          readonlyValue(other.readonlyValue),
+          name(std::move(other.name))
+    {
+        other.value = 0;
+        other.readonlyValue = 0;
+        other.name = "moved-from";
+
+        CountInstance();
+    }
+
+    // Move Assignment
+    DemoClass& DemoClass::operator=(DemoClass&& other) noexcept
+    {
+        if (this == &other)
+            return *this;
+
+        value = other.value;
+        readonlyValue = other.readonlyValue;
+        name = std::move(other.name);
+
+        other.value = 0;
+        other.readonlyValue = 0;
+        other.name = "moved-from";
+
+        return *this;
     }
 
     // ==================================
