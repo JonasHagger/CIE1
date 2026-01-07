@@ -18,11 +18,32 @@ namespace cie {
             }
         }
     }
-
     // overloading
     DoubleVector::DoubleVector()
         : DoubleVector(0)
     {}
+
+    // Copy Constructor
+    DoubleVector::DoubleVector(const DoubleVector& other)
+        :vectorSize(other.vectorSize), array(new double[vectorSize])
+    {
+        for (int i = 0; i < vectorSize; i++) {
+            array[i] = other.array[i];
+        }
+        vectorCount++;
+    }
+
+    // Assignment Constructor
+    DoubleVector& DoubleVector::operator=(const DoubleVector& other) {
+        if (this == &other) { return *this; }
+        delete[] array;
+        vectorSize = other.vectorSize;
+        array = new double[vectorSize];
+        for (int i = 0; i < vectorSize; i++) {
+            array[i] = other.array[i];
+        }
+        return *this;
+    }
 
     // Destructor
     DoubleVector::~DoubleVector() {

@@ -37,5 +37,15 @@ int main()
     cout << "Jetzt kommt v2" << endl;
     V2.print();
 
+    cout << "Copy V1 into V3" << endl;
+    DoubleVector V3 = V1;
+    V3.print();
+
+    cout << "Assign v4 = v3" << endl;
+    DoubleVector V4 = V1;
+    V4 = V3;
+    V4.print();
+
+
     return 0;
 }
