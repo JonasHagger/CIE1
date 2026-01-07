@@ -17,7 +17,6 @@ namespace cie {
         DoubleVector();
         DoubleVector(const DoubleVector& other);
         DoubleVector& operator=(const DoubleVector& other);
-
         // Destructors
         ~DoubleVector();
 

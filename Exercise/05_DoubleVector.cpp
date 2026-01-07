@@ -5,13 +5,12 @@ namespace cie {
     // Static fields come first
     int DoubleVector::vectorCount = 0;
 
-
     // Constructor
     DoubleVector::DoubleVector(int initSize)
-        :vectorSize(initSize)
+        :vectorSize(initSize), array(new double[vectorSize])
     {
         if (vectorSize > 0) {
-            array = new double[vectorSize];
+            //array = new double[vectorSize];
             vectorCount++;
             for (int i = 0; i < vectorSize; i++) {
                 array[i] = 0;
@@ -20,8 +19,46 @@ namespace cie {
     }
     // overloading
     DoubleVector::DoubleVector()
-        : DoubleVector(0)
-    {}
+        : DoubleVector(0) {
+        vectorCount++;
+        std::cout << "Overloadiiingnggg" << std::endl;
+    }
+
+    // Copy Constructor
+    DoubleVector::DoubleVector(const DoubleVector& other)
+        : vectorSize(other.vectorSize), array(new double[other.vectorSize])
+    {
+        vectorCount++;
+
+        for (int i = 0; i < vectorSize; i++) {
+            array[i] = other.array[i];
+        }
+    }
+
+    // Copy Assignment Constructor
+    DoubleVector& DoubleVector::operator=(const DoubleVector& other) {
+        // Protect against self-assignment
+        if (this == &other)
+            return *this;
+
+        // 1. Free old memory
+        delete[] array;
+
+        // 2. Copy size
+        vectorSize = other.vectorSize;
+
+        // 3. Allocate new array
+        array = new double[vectorSize];
+
+        // 4. Copy elements
+        for (int i = 0; i < vectorSize; i++) {
+            array[i] = other.array[i];
+        }
+
+        // 5. Return *this
+        return *this;
+    }
+
 
     // Copy Constructor
     DoubleVector::DoubleVector(const DoubleVector& other)
@@ -102,7 +139,7 @@ namespace cie {
 
     // print()
     void DoubleVector::print() {
-        std::cout << "Array: [ ";
+        std::cout << "Array with adress" << this << ": [ ";
         for (int i =0; i < size(); i++) {
             std::cout << at(i) << " ";
         }

@@ -18,7 +18,13 @@ namespace Demo {
         // Constructors
         DemoClass(int initialValue, int readOnly);
         DemoClass();
-        
+
+        // NEW:
+        DemoClass(const DemoClass& other);            // Copy constructor
+        DemoClass& operator=(const DemoClass& other); // Copy assignment
+        DemoClass(DemoClass&& other) noexcept;        // Move constructor
+        DemoClass& operator=(DemoClass&& other) noexcept; // Move assignment
+
         // Destructor
         ~DemoClass();
 
